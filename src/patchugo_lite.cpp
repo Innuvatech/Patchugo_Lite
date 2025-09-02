@@ -18,5 +18,13 @@ PatchugoStatusCode PatchugoLite::Init(void) {
     checkError = serialManager.RS485_Serial_Init(BAUDRATE_115200);
     if(checkError != OK) return checkError;
 
+    //Initialize USB serial with a baudrate of 115200
+    checkError = serialManager.USB_Serial_Init(BAUDRATE_115200);
+    if(checkError != OK) return checkError;
+
+    //Initialize I2C
+    checkError = i2cManager.Init();
+    if(checkError != OK) return checkError;
+
     return OK;
 }
