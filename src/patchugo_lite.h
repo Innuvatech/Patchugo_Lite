@@ -9,11 +9,13 @@
 
 #include "internal/io_manager/io_manager.h"
 #include "internal/bt_manager/bt_manager.h"
+#include "internal/serial_manager/serial_manager.h"
 
 class PatchugoLite {
     private:
         IO_Manager ioManager;
         BT_Manager btManager;
+        Serial_Manager serialManager;
     public:
         //TODO
         PatchugoStatusCode Init(void);

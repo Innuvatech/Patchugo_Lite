@@ -14,5 +14,9 @@ PatchugoStatusCode PatchugoLite::Init(void) {
     PatchugoStatusCode checkError = btManager.Init();
     if(checkError != OK) return checkError;
 
+    //Initialize RS485 serial with a baudrate of 115200
+    checkError = serialManager.RS485_Serial_Init(BAUDRATE_115200);
+    if(checkError != OK) return checkError;
+
     return OK;
 }
