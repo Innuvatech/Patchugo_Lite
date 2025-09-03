@@ -61,7 +61,7 @@ class I2C_Manager {
         * - OK: The I2C register write was successful
         * - ERROR_I2C_WRITE_REG: An error occurred during the I2C write of the register.
         */
-        PatchugoStatusCode I2C_WriteReg(uint8_t addr, uint8_t regAddr, uint16_t regAddrSize, uint8_t *writeData, uint16_t len, uint32_t timeout);
+        PatchugoStatusCode I2C_WriteReg(uint8_t addr, uint16_t regAddr, uint16_t regAddrSize, uint8_t *writeData, uint16_t len, uint32_t timeout);
 
         /**
         * @brief Reads a register of the I2C device with the given address
@@ -76,7 +76,7 @@ class I2C_Manager {
         * - OK: The I2C register write was successful
         * - ERROR_I2C_READ_REG: An error occurred during the I2C read of the register.
         */
-        PatchugoStatusCode I2C_ReadReg(uint8_t addr, uint8_t regAddr, uint16_t regAddrSize, uint8_t *readData, uint16_t len, uint32_t timeout);
+        PatchugoStatusCode I2C_ReadReg(uint8_t addr, uint16_t regAddr, uint16_t regAddrSize, uint8_t *readData, uint16_t len, uint32_t timeout);
 };
 
 

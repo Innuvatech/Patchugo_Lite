@@ -25,12 +25,12 @@ PatchugoStatusCode I2C_Manager::I2C_Read(uint8_t addr, uint8_t *readData, uint16
     return OK;
 }
 
-PatchugoStatusCode I2C_Manager::I2C_WriteReg(uint8_t addr, uint8_t regAddr, uint16_t regAddrSize, uint8_t *writeData, uint16_t len, uint32_t timeout) {
+PatchugoStatusCode I2C_Manager::I2C_WriteReg(uint8_t addr, uint16_t regAddr, uint16_t regAddrSize, uint8_t *writeData, uint16_t len, uint32_t timeout) {
     if(HAL_I2C_Mem_Write(&hi2c3, addr, regAddr, regAddrSize, writeData, len, timeout) != HAL_OK) return ERROR_I2C_WRITE_REG;
     return OK;
 }
 
-PatchugoStatusCode I2C_Manager::I2C_ReadReg(uint8_t addr, uint8_t regAddr, uint16_t regAddrSize, uint8_t *readData, uint16_t len, uint32_t timeout) {
+PatchugoStatusCode I2C_Manager::I2C_ReadReg(uint8_t addr, uint16_t regAddr, uint16_t regAddrSize, uint8_t *readData, uint16_t len, uint32_t timeout) {
     if(HAL_I2C_Mem_Read(&hi2c3, addr, regAddr, regAddrSize, readData, len, timeout) != HAL_OK) return ERROR_I2C_READ_REG;
     return OK;
 }

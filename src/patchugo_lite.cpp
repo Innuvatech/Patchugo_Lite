@@ -22,6 +22,10 @@ PatchugoStatusCode PatchugoLite::Init(void) {
     checkError = i2cManager.Init();
     if(checkError != OK) return checkError;
 
+    //Initialize SPI
+    checkError = spiManager.Init(SPI_CPOL_LOW, SPI_CPHA_2EDGE);
+    if(checkError != OK) return checkError;
+
     //Initialize bluetooth management part of the library
     checkError = btManager.Init();
     if(checkError != OK) return checkError;
@@ -91,4 +95,12 @@ PatchugoStatusCode PatchugoLite::RS485_Async_RX_Set_Callback(DMA_CALLBACK_PTR pt
 
 void PatchugoLite::RS485_Start_Async_Listen(void) {
     serialManager.RS485_Start_Async_Listen();
+}
+
+PatchugoStatusCode PatchugoLite::SPI_Write(SPI_CS cs, uint8_t *writeData, uint16_t len, uint32_t timeout) {
+    return spiManager.SPI_Write(cs,writeData,len,timeout);
+}
+
+PatchugoStatusCode PatchugoLite::SPI_Read(SPI_CS cs, uint8_t *readData, uint16_t len, uint32_t timeout) {
+    return spiManager.SPI_Read(cs,readData,len,timeout);
 }
