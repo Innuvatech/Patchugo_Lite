@@ -123,8 +123,8 @@ PatchugoStatusCode BT_Manager::Init(void) {
     if(checkError != OK) return checkError;
 
     //Start with a default MTU of 100
-    checkError = BT_Set_MTU(BT_DEFAULT_MTU);
-    if(checkError != OK) return checkError;
+    //heckError = BT_Set_MTU(BT_DEFAULT_MTU);
+    //if(checkError != OK) return checkError;
 
     BT_AT_Helpers::Set_BTState(BT_STATE_IDLE);
     
