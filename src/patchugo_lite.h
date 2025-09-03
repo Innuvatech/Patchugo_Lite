@@ -11,6 +11,7 @@
 #include "internal/bt_manager/bt_manager.h"
 #include "internal/serial_manager/serial_manager.h"
 #include "internal/i2c_manager/i2c_manager.h"
+#include "internal/spi_manager/spi_manager.h"
 
 class PatchugoLite {
     private:
@@ -18,6 +19,7 @@ class PatchugoLite {
         BT_Manager btManager;
         Serial_Manager serialManager;
         I2C_Manager i2cManager;
+        SPI_Manager spiManager;
     public:
         //TODO
         PatchugoStatusCode Init(void);
@@ -40,4 +42,7 @@ class PatchugoLite {
         PatchugoStatusCode USB_Serial_Read(uint8_t* buf, uint16_t len, uint32_t timeout);
         PatchugoStatusCode RS485_Async_RX_Set_Callback(DMA_CALLBACK_PTR ptr, PatchugoStatusCode* result);
         void RS485_Start_Async_Listen(void);
+
+        PatchugoStatusCode SPI_Write(SPI_CS cs, uint8_t *writeData, uint16_t len, uint32_t timeout);
+        PatchugoStatusCode SPI_Read(SPI_CS cs, uint8_t *readData, uint16_t len, uint32_t timeout);
 };
