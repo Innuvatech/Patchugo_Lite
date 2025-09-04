@@ -12,6 +12,7 @@
 #include "internal/serial_manager/serial_manager.h"
 #include "internal/i2c_manager/i2c_manager.h"
 #include "internal/spi_manager/spi_manager.h"
+#include "internal/flash_manager/flash_manager.h"
 
 class PatchugoLite {
     private:
@@ -20,6 +21,7 @@ class PatchugoLite {
         Serial_Manager serialManager;
         I2C_Manager i2cManager;
         SPI_Manager spiManager;
+        Flash_Manager flashManager;
     public:
         //TODO
         PatchugoStatusCode Init(void);
@@ -45,4 +47,19 @@ class PatchugoLite {
 
         PatchugoStatusCode SPI_Write(SPI_CS cs, uint8_t *writeData, uint16_t len, uint32_t timeout);
         PatchugoStatusCode SPI_Read(SPI_CS cs, uint8_t *readData, uint16_t len, uint32_t timeout);
+
+        PatchugoStatusCode I2C_Init(I2CConfigStruct configStruct = DEFAULT_I2C_CONFIG_STRUCT);
+        PatchugoStatusCode I2C_Write(uint8_t addr, uint8_t *data, uint16_t len, uint32_t timeout);
+        PatchugoStatusCode I2C_Read(uint8_t addr, uint8_t *readData, uint16_t len, uint32_t timeout);
+        PatchugoStatusCode I2C_WriteReg(uint8_t addr, uint16_t regAddr, uint16_t regAddrSize, uint8_t *writeData, uint16_t len, uint32_t timeout);
+        PatchugoStatusCode I2C_ReadReg(uint8_t addr, uint16_t regAddr, uint16_t regAddrSize, uint8_t *readData, uint16_t len, uint32_t timeout);
+
+        PatchugoStatusCode Flash_Read_Register(uint8_t reg, uint8_t *readValue);
+        PatchugoStatusCode Flash_Write_Instruction(uint8_t instruction);
+        PatchugoStatusCode Flash_Reset(void);
+        PatchugoStatusCode Flash_Erase(void);
+        PatchugoStatusCode Flash_Erase_Sector(Flash_Sector sector);
+        PatchugoStatusCode Flash_Read_Data(Flash_Sector sector, Flash_Page page, uint8_t *readData, uint32_t len);
+        PatchugoStatusCode Flash_Write_Data(Flash_Sector sector, Flash_Page page, uint8_t *writeData, uint8_t len);
+
 };
