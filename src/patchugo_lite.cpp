@@ -30,6 +30,9 @@ PatchugoStatusCode PatchugoLite::Init(void) {
     checkError = btManager.Init();
     if(checkError != OK) return checkError;
 
+    checkError = flashManager.Flash_Init();
+    if(checkError != OK) return checkError;
+
     return OK;
 }
 
@@ -103,4 +106,52 @@ PatchugoStatusCode PatchugoLite::SPI_Write(SPI_CS cs, uint8_t *writeData, uint16
 
 PatchugoStatusCode PatchugoLite::SPI_Read(SPI_CS cs, uint8_t *readData, uint16_t len, uint32_t timeout) {
     return spiManager.SPI_Read(cs,readData,len,timeout);
+}
+
+PatchugoStatusCode PatchugoLite::I2C_Init(I2CConfigStruct configStruct = DEFAULT_I2C_CONFIG_STRUCT) {
+    return i2cManager.Init(configStruct);
+}
+
+PatchugoStatusCode PatchugoLite::I2C_Write(uint8_t addr, uint8_t *data, uint16_t len, uint32_t timeout) {
+    return i2cManager.I2C_Write(addr, data, len, timeout);
+}
+
+PatchugoStatusCode PatchugoLite::I2C_Read(uint8_t addr, uint8_t *readData, uint16_t len, uint32_t timeout) {
+    return i2cManager.I2C_Read(addr, readData, len, timeout);
+}
+
+PatchugoStatusCode PatchugoLite::I2C_WriteReg(uint8_t addr, uint16_t regAddr, uint16_t regAddrSize, uint8_t *writeData, uint16_t len, uint32_t timeout) {
+    return i2cManager.I2C_WriteReg(addr, regAddr, regAddrSize, writeData, len, timeout);
+}
+
+PatchugoStatusCode PatchugoLite::I2C_ReadReg(uint8_t addr, uint16_t regAddr, uint16_t regAddrSize, uint8_t *readData, uint16_t len, uint32_t timeout) {
+    return i2cManager.I2C_ReadReg(addr, regAddr, regAddrSize, readData, len, timeout);
+}
+
+PatchugoStatusCode PatchugoLite::Flash_Read_Register(uint8_t reg, uint8_t *readValue) {
+    return flashManager.Flash_Read_Register(reg, readValue);
+}
+
+PatchugoStatusCode PatchugoLite::Flash_Write_Instruction(uint8_t instruction) {
+    return flashManager.Flash_Write_Instruction(instruction);
+}
+
+PatchugoStatusCode PatchugoLite::Flash_Reset(void) {
+    return flashManager.Flash_Reset();
+}
+
+PatchugoStatusCode PatchugoLite::Flash_Erase(void) {
+    return flashManager.Flash_Erase();
+}
+
+PatchugoStatusCode PatchugoLite::Flash_Erase_Sector(Flash_Sector sector) {
+    return flashManager.Flash_Erase_Sector(sector);
+}
+
+PatchugoStatusCode PatchugoLite::Flash_Read_Data(Flash_Sector sector, Flash_Page page, uint8_t *readData, uint32_t len) {
+    return flashManager.Flash_Read_Data(sector, page, readData, len);
+}
+
+PatchugoStatusCode PatchugoLite::Flash_Write_Data(Flash_Sector sector, Flash_Page page, uint8_t *writeData, uint8_t len) {
+    return flashManager.Flash_Write_Data(sector, page, writeData, len);
 }
