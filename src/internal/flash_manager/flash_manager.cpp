@@ -82,7 +82,7 @@ PatchugoStatusCode Flash_Manager::Flash_Erase(void) {
     return Flash_Check_Status1();
 }
 
-PatchugoStatusCode Flash_Manager::Flash_Erase_Sector(Flash_Sector sector) {
+PatchugoStatusCode Flash_Manager::Flash_Erase_Sector(FlashSector sector) {
     uint32_t sectorAddr = static_cast<uint32_t>(sector);
     uint32_t convertedAddr = sectorAddr & 0xFFFFFF;
 
@@ -110,12 +110,15 @@ PatchugoStatusCode Flash_Manager::Flash_Erase_Sector(Flash_Sector sector) {
     return Flash_Check_Status1();
 }
 
-PatchugoStatusCode Flash_Manager::Flash_Read_Data(Flash_Sector sector, Flash_Page page, uint8_t *readData, uint32_t len) {
+PatchugoStatusCode Flash_Manager::Flash_Read_Data(FlashSector sector, FlashPage page, FlashPageOffset offset, uint8_t *readData, uint32_t len) {
 
     uint32_t sectorAddr = static_cast<uint32_t>(sector);
     uint32_t pageAddr = static_cast<uint32_t>(page);
     uint32_t writeAddr = sectorAddr + pageAddr;
-    uint32_t convertedAddr = writeAddr & 0xFFFFFF;
+    uint32_t offsetVal = static_cast<uint32_t>(offset);
+    uint32_t convertedAddr = (writeAddr & 0xFFFFFF) + offsetVal;
+
+    if((convertedAddr + len) >= 0xFFFFFF) return ERROR_FLASH_OVERFLOW;
 
     uint8_t cmdBuf[FLASH_CMD_LEN] = {0};
     cmdBuf[0] = FLASH_CMD_READ_DATA;
@@ -141,17 +144,20 @@ PatchugoStatusCode Flash_Manager::Flash_Read_Data(Flash_Sector sector, Flash_Pag
     return OK;
 }
 
-PatchugoStatusCode Flash_Manager::Flash_Write_Data(Flash_Sector sector, Flash_Page page, uint8_t *writeData, uint8_t len) {
+PatchugoStatusCode Flash_Manager::Flash_Write_Data(FlashSector sector, FlashPage page, FlashPageOffset offset,  uint8_t *writeData, uint8_t len) {
 
     uint32_t sectorAddr = static_cast<uint32_t>(sector);
     uint32_t pageAddr = static_cast<uint32_t>(page);
     uint32_t writeAddr = sectorAddr + pageAddr;
-    uint32_t convertedAddr = writeAddr & 0xFFFFFF;
+    uint32_t offsetVal = static_cast<uint32_t>(offset);
+    uint32_t convertedAddr = (writeAddr & 0xFFFFFF) + offsetVal;
+
+    if((convertedAddr + len) >= 0xFFFFFF) return ERROR_FLASH_OVERFLOW;
 
     PatchugoStatusCode checkError =  Flash_Write_Instruction(FLASH_CMD_WRITE_ENB);
     if(checkError != OK) return checkError;
 
-    uint8_t dataTx[FLASH_PAGE_SIZE+4] = {0}; //+4 PERCHE' 1 BYTE DI CMD E 3 DI ADDRESS
+    uint8_t dataTx[FLASH_PAGE_SIZE+4] = {0};
     dataTx[0] = FLASH_CMD_WRITE_PAGE;
     dataTx[1] = (convertedAddr >> 16) & 0xFF;
     dataTx[2] = (convertedAddr >> 8) & 0xFF;

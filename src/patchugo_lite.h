@@ -58,8 +58,8 @@ class PatchugoLite {
         PatchugoStatusCode Flash_Write_Instruction(uint8_t instruction);
         PatchugoStatusCode Flash_Reset(void);
         PatchugoStatusCode Flash_Erase(void);
-        PatchugoStatusCode Flash_Erase_Sector(Flash_Sector sector);
-        PatchugoStatusCode Flash_Read_Data(Flash_Sector sector, Flash_Page page, uint8_t *readData, uint32_t len);
-        PatchugoStatusCode Flash_Write_Data(Flash_Sector sector, Flash_Page page, uint8_t *writeData, uint8_t len);
+        PatchugoStatusCode Flash_Erase_Sector(FlashSector sector);
+        PatchugoStatusCode Flash_Read_Data(FlashSector sector, FlashPage page, FlashPageOffset offset, uint8_t *readData, uint32_t len);
+        PatchugoStatusCode Flash_Write_Data(FlashSector sector, FlashPage page, FlashPageOffset offset,  uint8_t *writeData, uint8_t len);
 
 };

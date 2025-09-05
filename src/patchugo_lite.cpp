@@ -108,7 +108,7 @@ PatchugoStatusCode PatchugoLite::SPI_Read(SPI_CS cs, uint8_t *readData, uint16_t
     return spiManager.SPI_Read(cs,readData,len,timeout);
 }
 
-PatchugoStatusCode PatchugoLite::I2C_Init(I2CConfigStruct configStruct = DEFAULT_I2C_CONFIG_STRUCT) {
+PatchugoStatusCode PatchugoLite::I2C_Init(I2CConfigStruct configStruct) {
     return i2cManager.Init(configStruct);
 }
 
@@ -144,14 +144,14 @@ PatchugoStatusCode PatchugoLite::Flash_Erase(void) {
     return flashManager.Flash_Erase();
 }
 
-PatchugoStatusCode PatchugoLite::Flash_Erase_Sector(Flash_Sector sector) {
+PatchugoStatusCode PatchugoLite::Flash_Erase_Sector(FlashSector sector) {
     return flashManager.Flash_Erase_Sector(sector);
 }
 
-PatchugoStatusCode PatchugoLite::Flash_Read_Data(Flash_Sector sector, Flash_Page page, uint8_t *readData, uint32_t len) {
-    return flashManager.Flash_Read_Data(sector, page, readData, len);
+PatchugoStatusCode PatchugoLite::Flash_Read_Data(FlashSector sector, FlashPage page, FlashPageOffset offset, uint8_t *readData, uint32_t len) {
+    return flashManager.Flash_Read_Data(sector, page, offset, readData, len);
 }
 
-PatchugoStatusCode PatchugoLite::Flash_Write_Data(Flash_Sector sector, Flash_Page page, uint8_t *writeData, uint8_t len) {
-    return flashManager.Flash_Write_Data(sector, page, writeData, len);
+PatchugoStatusCode PatchugoLite::Flash_Write_Data(FlashSector sector, FlashPage page, FlashPageOffset offset,  uint8_t *writeData, uint8_t len) {
+    return flashManager.Flash_Write_Data(sector, page, offset,  writeData, len);
 }

@@ -85,7 +85,7 @@ class Flash_Manager {
         * - ERROR_FLASH_SECTOR_ERASE: There was an error while erasing the sector
         * - ERROR_FLASH_STATUS: The flash status register did not signal ok
         */
-        PatchugoStatusCode Flash_Erase_Sector(Flash_Sector sector);
+        PatchugoStatusCode Flash_Erase_Sector(FlashSector sector);
 
         /**
         * @brief Reads data stored on the external flash chip given the sector and page to start from
@@ -98,7 +98,7 @@ class Flash_Manager {
         * - OK: The data was read successfully
         * - ERROR_FLASH_READ_DATA: There was an error while reading the data 
         */
-        PatchugoStatusCode Flash_Read_Data(Flash_Sector sector, Flash_Page page, uint8_t *readData, uint32_t len);
+        PatchugoStatusCode Flash_Read_Data(FlashSector sector, FlashPage page, FlashPageOffset offset, uint8_t *readData, uint32_t len);
 
         /**
         * @brief Writes data to the external flash chip
@@ -112,6 +112,6 @@ class Flash_Manager {
         * - ERROR_FLASH_WRITE_INSTRUCTION: There was an error while writing instruction to enable the write
         * - ERROR_FLASH_WRITE_DATA: There was an error while writing the data
         */
-        PatchugoStatusCode Flash_Write_Data(Flash_Sector sector, Flash_Page page, uint8_t *writeData, uint8_t len);
+        PatchugoStatusCode Flash_Write_Data(FlashSector sector, FlashPage page, FlashPageOffset offset,  uint8_t *writeData, uint8_t len);
 };
 
