@@ -41,3 +41,21 @@ returns a **PatchugoStatusCode**, that is an enum value that represent status co
   uint8_t convertedCode = PatchugoStatusCode_ToUint(myCode);
   Serial.println(convertedCode);
 ```
+
+## IO Pins
+
+The PatchugoLite board has 8 24V isolated INPUT pins(U7 connector) and 8 24V isolated OUTPUT pins(U24 connector) that can be easily controlled from the library.
+The pins are automatically initialized in the Init function of the library. Input pins are mapped in the **ISO_InputPin** enum class while Output pins are mapped in the **ISO_OutputPin** class. The library provide functions to read Input pins and write Output pins.
+
+### Write output pin example
+
+```
+  //Sets OUT3 to 1
+  patchugoLite.ISO_IO_Write(ISO_OUT3, SET);
+```
+
+### Read input pin example
+```
+  //Read IN5 and put result in readPin
+  uint8_t readPin = patchugoLite.ISO_IO_Read(ISO_IN5);
+```
