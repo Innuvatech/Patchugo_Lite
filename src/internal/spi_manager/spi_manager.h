@@ -2,7 +2,11 @@
 * File: spi_manager.h
 * Created on: 2025-09-03 at 11:25
 * Author: Andrea Rantin
-* Description: //TODO
+* Description: This file contains the definition of the SPI_Manager class and its members/functions. The class
+* allows to control the SPI peripheral of the PatchugoLite board and provides the following functionalities:
+* - Initializing the SPI peripheral with customizable Clock phase, Clock polarity and optional configuration parameters
+* - Writing trough SPI
+* - Reading trough SPI
 */
 
 #pragma once

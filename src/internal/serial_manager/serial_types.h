@@ -2,7 +2,9 @@
 * File: serial_types.h
 * Created on: 2025-09-02 at 14:31
 * Author: Andrea Rantin
-* Description: //TODO
+* Description: This file contains the definitions used for serial management in this library such as 
+* baudrate, advanced configuration parameters, RS485 configuration as well as a callback type that can be used by the user
+* for asynchronous operations.
 */
 
 #pragma once

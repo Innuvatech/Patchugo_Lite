@@ -2,7 +2,8 @@
 * File: spi_helpers.h
 * Created on: 2025-09-03 at 11:29
 * Author: Andrea Rantin
-* Description: //TODO
+* Description: This file contains the definitions for helpers functions used to manage the low level initialization
+* of the SPI peripheral of the PatchugoLite board
 */
 
 #pragma once

@@ -2,7 +2,14 @@
 * File: flash_manager.h
 * Created on: 2025-09-04 at 10:23
 * Author: Andrea Rantin
-* Description: //TODO
+* Description: This file contains definitions of the Flash_Manager class and it's members/functions to
+* control the external flash chip of the PatchugoLite board. It allows the following functionalities:
+* - Erasing the flash
+* - Erasing a sector
+* - Writing to the flash
+* - Reading to the flash
+* - Resetting the flash
+* - Writing single byte instructions to the flash
 */
 
 #pragma once
@@ -22,7 +29,13 @@ class Flash_Manager {
         static constexpr uint8_t FLASH_STATUS_REG_1 = 0x05;
         static constexpr uint8_t FLASH_CMD_LEN = 4;
         static constexpr uint32_t FLASH_CS_PIN = PA15;
-        //TODO
+        /**
+        * @brief Checks the external flash status 1 register to see if it's ready
+        * 
+        * @return PatchugoStatusCode This function can return the following values:
+        * - OK: The external flash status register 1 signaled ready
+        * - ERROR_FLASH_STATUS: The external flash status 1 register did not signal ready
+        */
         PatchugoStatusCode Flash_Check_Status1(void);
     public:
         /**

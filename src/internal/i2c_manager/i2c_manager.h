@@ -2,7 +2,13 @@
 * File: i2c_manager.h
 * Created on: 2025-09-02 at 16:03
 * Author: Andrea Rantin
-* Description: //TODO
+* Description: This file contains the definitions of the I2C_Manager class and its members/functions to control
+* the I2C peripheral of the PatchugoLite board. It allows the following functionalities:
+* - Initialize I2C with the optional possibility of providing custom configuration parameters
+* - Writing trough I2C
+* - Reading trough I2C
+* - Writing to a specific register of a connected I2C device
+* - Reading from a specific register of a connected I2C device
 */
 
 #pragma once

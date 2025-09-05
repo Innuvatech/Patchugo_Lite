@@ -2,7 +2,15 @@
 * File: serial_manager.h
 * Created on: 2025-09-02 at 14:36
 * Author: Andrea Rantin
-* Description: //TODO
+* Description: This file contains the definition of the Serial_Manager class and its members/functions. The class
+* allows to control all the serial peripherals of the PatchugoLite(RS485, USB) and it provides the following functionalities.
+* - Initializing RS485 serial with customizable baudrate and optional advanced parameters
+* - Initializing USB serial with customizable baudrate and optional advanced parameters
+* - Writing trough RS485 serial
+* - Reading trough RS485 serial
+* - Having asyncrhonous RX callbacks from RS485 serial
+* - Writing trough USB serial
+* - Reading trough USB serial
 */
 
 #pragma once
@@ -73,7 +81,7 @@ class Serial_Manager {
         */
         PatchugoStatusCode RS485_Async_RX_Set_Callback(DMA_CALLBACK_PTR ptr, PatchugoStatusCode* result);
 
-         /**
+        /**
         * @brief Performs a serial write trough USB serial
         * 
         * @param buf Buffer to write

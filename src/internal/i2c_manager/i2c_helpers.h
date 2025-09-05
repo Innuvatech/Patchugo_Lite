@@ -2,7 +2,8 @@
 * File: i2c_helpers.h
 * Created on: 2025-09-02 at 15:55
 * Author: Andrea Rantin
-* Description: //TODO
+* Description: This file contains definitions for helpers functions used to manage the low level initialization
+* of the I2C peripheral of the PatchugoLite board
 */
 
 #pragma once

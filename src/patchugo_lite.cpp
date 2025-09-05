@@ -44,6 +44,10 @@ uint8_t PatchugoLite::ISO_IO_Read(ISO_InputPin_Typedef pin) {
     return ioManager.ISO_IO_Read(pin);
 }
 
+PatchugoStatusCode PatchugoLite::BT_Echo_Off(void) {
+    return btManager.BT_Echo_Off();
+}
+
 PatchugoStatusCode PatchugoLite::BT_Change_Name(const char *name) {
     return btManager.BT_Change_Name(name);
 }
