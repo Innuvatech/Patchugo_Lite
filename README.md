@@ -110,3 +110,21 @@ The library provides a function that allows writing trough RS485. An example is 
     Serial.println("ERROR RS485 WRITE");
   }
 ```
+
+#### Reading from RS485
+
+The libraru provides a function that allows reading from RS485. An example is provided below:
+
+```
+  //Reads 3 byte in polling
+  uint8_t myRead[3] = {0};
+
+  PatchugoStatusCode checkError = patchugoLite.RS485_Serial_Read(myRead, 3, 2000);
+  if(checkError != OK) {
+    Serial.println("ERROR READ");
+  }
+
+  for(uint8_t i = 0; i < 3; i++) {
+    Serial.println(myRead[i]);
+  }
+```
