@@ -68,7 +68,7 @@ Both serials are automatically initialized in the Init function of PatchugoLite 
 called if the user wants to customize their parameters.
 
 ### RS485
-This serial as specified above is automatically initialized inside the Init function of PatchugoLite but it can also be initialized by calling the **RS485_Serial_Init** function in case there's the need of a different baudrate or different configuration parameters. An example of custom initialization is provided below:
+This RS485 serial as specified above is automatically initialized inside the Init function of PatchugoLite but it can also be initialized by calling the **RS485_Serial_Init** function in case there's the need of a different baudrate or different configuration parameters. An example of custom initialization is provided below:
 
 #### Basic initialization
 ```
@@ -95,5 +95,18 @@ ARE DOING**
   PatchugoStatusCode checkError = patchugoLite.RS485_Serial_Init(SerialBaudRate::BAUDRATE_57600,confStruct);
   if(checkError != OK) {
     Serial.println("ERROR INIT RS485");
+  }
+```
+
+#### Writing with RS485
+
+The library provides a function that allows writing trough RS485. An example is provided below:
+
+```
+  //Writes 3 bytes trough RS485
+  uint8_t myBuf[3] = {0x41, 0x42, 0x43};
+  PatchugoStatusCode checkError = patchugoLite.RS485_Serial_Write(myBuf, 3);
+  if(checkError != OK) {
+    Serial.println("ERROR RS485 WRITE");
   }
 ```
