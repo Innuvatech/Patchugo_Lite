@@ -128,3 +128,91 @@ The libraru provides a function that allows reading from RS485. An example is pr
     Serial.println(myRead[i]);
   }
 ```
+
+## I2C
+The PatchugoLite has an I2C that can be used for communication with other I2C devices. The library provides a really simple API to read/write to devices in order to control them. The I2C is initialized automatically in the library Init function but can be initialized manually by providing custom
+configuration parameters if necessary. 
+
+### Writing with I2C
+In order to write to a device with I2C the **I2C_Write** function must be called. The function takes the following parameters:
+  - addr: The 7 bit address of the I2C device to write to
+  - data: Pointer to the data to write
+  - len: Length of the data to write
+  - timeout: Timeout value in milliseconds after which the write request will timeout
+
+An example of an I2C write is provided below:
+```
+//Define 7 bit I2C address of slave device
+#define DEVICE_ADDR (0x23 << 1)
+
+ //Write the byte 0x01 to the device
+uint8_t powerOn = 0x01;
+if(patchugoLite.I2C_Write(DEVICE_ADDR, &powerOn, 1, 1000) != OK) {
+  Serial.println("ERROR I2C WRITE");
+}
+```
+
+### Reading with I2C
+In ordder to read from a device with I2C the **I2C_Read** function must be called. The function takes the following parameters:
+  - addr: The 7 bit address of the I2C device to read from
+  - readData: Pointer to the data that will be read
+  - len: Length of the data to read
+  - timeout: Timeout value in milliseconds after which the write request will timeout
+
+  An example of an I2C read is provided below:
+
+  ```
+    //Define 7 bit I2C address of slave device
+    #define DEVICE_ADDR (0x23 << 1)
+
+    //Read 2 bytes from the device and put them into readB
+    uint8_t readB[2] = {0};
+    if(patchugoLite.I2C_Read(DEVICE_ADDR, readB, 2, 1000) != OK) {
+      Serial.println("ERROR READ I2C");
+    }
+
+  ```
+
+### Writing to a specific register with I2C
+The library allows writing to a specific register of a given I2C slave device. In order to do that, the function **I2C_WriteReg** must be called. The funcion takes the following parameters:
+  - addr: The 7 bit address of the I2C device to write to
+  - regAddr: The address of the register to write
+  - regAddrSize: The size in bytes of the register to write
+  - writeData: Pointer to the data to write to the register
+  - len: Length of the data to write
+  - timeout: Timeout value in milliseconds after which the write request will timeout
+
+An example of an I2C write to a specific register is provided below:
+
+ ```
+  //Define address of a register of slave device
+  #define REG_ADDR  0x10
+
+   //Writes 0x08 to the register
+  uint8_t myValue = 0x08;
+  if(patchugoLite.I2C_WriteReg(DEVICE_ADDR, REG_ADDR, 1, &myValue, 1, 1000) != OK) {
+    Serial.println("ERROR I2C WRITE REG");
+  }
+ ```
+
+### Reading from a specific register with I2C
+The library allows reading from a specific register of a given I2C slave device. In order to do that, the function **I2C_ReadReg** must be called. The function takes the following parameters:
+  - addr: The 7 bit address of the I2C device to read from
+  - regAddr: The address of the register to read
+  - regAddrSize: The size in bytes of the register to read
+  - readData: Pointer to the data to read
+  - len: Length of the data to read
+  - timeout: Timeout value in milliseconds after which the write request will timeout
+
+An example of an I2C read from a specific register is provided below:
+
+ ```
+  //Define address of a register of slave device
+  #define REG_ADDR  0x10
+
+  //Read a byte from the register and puts it in myRead
+  uint8_t myRead = 0;
+  if(patchugoLite.I2C_ReadReg(DEVICE_ADDR, REG_ADDR, 1, &myRead, 1, 1000) != OK) {
+    Serial.println("ERROR I2C READ REG");
+  }
+ ```
