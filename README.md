@@ -216,3 +216,22 @@ An example of an I2C read from a specific register is provided below:
     Serial.println("ERROR I2C READ REG");
   }
  ```
+
+## SPI
+The PatchugoLite has a SPI that can be used to communicate with other SPI devices. The library provides a simple and clean API to read/write to other SPI devices. The SPI is initialized automatically inside the Init function of PatchugoLite with the following configuration:
+  - LOW clock polarity
+  - 2 EDGE clock phase
+  - default advanced configuration parameters
+In case different parameters are needed the **SPI_Init** function from PatchugoLite must be called. The function takes the following parameters:
+  - cpol: Clock polarity
+  - cpha: Clock phase
+  - cfgStruct(optional): Advanced configuration parameters structure
+
+An example of SPI init is provided below:
+
+```
+  //Initialize SPI with HIGH clock polarity and 1 EDGE detection
+  if(patchugoLite.SPI_Init(SPI_CPOL_HIGH, SPI_CPHA_1EDGE) != OK) {
+    Serial.println("ERROR SPI INIT");
+  }
+```
