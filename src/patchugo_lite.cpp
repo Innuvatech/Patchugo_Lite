@@ -36,11 +36,11 @@ PatchugoStatusCode PatchugoLite::Init(void) {
     return OK;
 }
 
-void PatchugoLite::ISO_IO_Write(ISO_OutputPin_Typedef pin, FlagStatus state) {
+void PatchugoLite::ISO_IO_Write(ISO_OutputPin pin, FlagStatus state) {
     ioManager.ISO_IO_Write(pin, state);
 }
 
-uint8_t PatchugoLite::ISO_IO_Read(ISO_InputPin_Typedef pin) {
+uint8_t PatchugoLite::ISO_IO_Read(ISO_InputPin pin) {
     return ioManager.ISO_IO_Read(pin);
 }
 
@@ -158,4 +158,8 @@ PatchugoStatusCode PatchugoLite::Flash_Read_Data(FlashSector sector, FlashPage p
 
 PatchugoStatusCode PatchugoLite::Flash_Write_Data(FlashSector sector, FlashPage page, FlashPageOffset offset,  uint8_t *writeData, uint8_t len) {
     return flashManager.Flash_Write_Data(sector, page, offset,  writeData, len);
+}
+
+PatchugoStatusCode PatchugoLite::SPI_Init(SPI_CPOL cpol, SPI_CPHA cpha, SPIConfigStruct cfgStruct) {
+    return spiManager.Init(cpol, cpha, cfgStruct);
 }

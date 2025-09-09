@@ -16,7 +16,7 @@
 * @brief Isolated 24V INPUT pins of the board(U7 connector)
 * 
 */
-enum class ISO_InputPin_Typedef {
+enum class ISO_InputPin {
     ISO_IN1 = PB2,
     ISO_IN2 = PB1,
     ISO_IN3 = PB0,
@@ -31,7 +31,7 @@ enum class ISO_InputPin_Typedef {
 * @brief Isolated 24V OUTPUT pins of the board(U29 connector)
 * 
 */
-enum class ISO_OutputPin_Typedef {
+enum class ISO_OutputPin {
     ISO_OUT1 = PE14,
     ISO_OUT2 = PE13,
     ISO_OUT3 = PE11,
@@ -48,14 +48,14 @@ enum class ISO_OutputPin_Typedef {
 * ISO_InputPin_Typedef::ISO_INx
 * 
 */
-static constexpr ISO_InputPin_Typedef ISO_IN1 = ISO_InputPin_Typedef::ISO_IN1;
-static constexpr ISO_InputPin_Typedef ISO_IN2 = ISO_InputPin_Typedef::ISO_IN2;
-static constexpr ISO_InputPin_Typedef ISO_IN3 = ISO_InputPin_Typedef::ISO_IN3;
-static constexpr ISO_InputPin_Typedef ISO_IN4 = ISO_InputPin_Typedef::ISO_IN4;
-static constexpr ISO_InputPin_Typedef ISO_IN5 = ISO_InputPin_Typedef::ISO_IN5;
-static constexpr ISO_InputPin_Typedef ISO_IN6 = ISO_InputPin_Typedef::ISO_IN6;
-static constexpr ISO_InputPin_Typedef ISO_IN7 = ISO_InputPin_Typedef::ISO_IN7;
-static constexpr ISO_InputPin_Typedef ISO_IN8 = ISO_InputPin_Typedef::ISO_IN8;
+static constexpr ISO_InputPin ISO_IN1 = ISO_InputPin::ISO_IN1;
+static constexpr ISO_InputPin ISO_IN2 = ISO_InputPin::ISO_IN2;
+static constexpr ISO_InputPin ISO_IN3 = ISO_InputPin::ISO_IN3;
+static constexpr ISO_InputPin ISO_IN4 = ISO_InputPin::ISO_IN4;
+static constexpr ISO_InputPin ISO_IN5 = ISO_InputPin::ISO_IN5;
+static constexpr ISO_InputPin ISO_IN6 = ISO_InputPin::ISO_IN6;
+static constexpr ISO_InputPin ISO_IN7 = ISO_InputPin::ISO_IN7;
+static constexpr ISO_InputPin ISO_IN8 = ISO_InputPin::ISO_IN8;
 
 /**
 * @brief Static  constexpressions to ease the use of enum values for isolated V24 OUTPUT pins.
@@ -63,12 +63,12 @@ static constexpr ISO_InputPin_Typedef ISO_IN8 = ISO_InputPin_Typedef::ISO_IN8;
 * ISO_OutputPin::ISO_OUTx
 * 
 */
-static constexpr ISO_OutputPin_Typedef ISO_OUT1 = ISO_OutputPin_Typedef::ISO_OUT1;
-static constexpr ISO_OutputPin_Typedef ISO_OUT2 = ISO_OutputPin_Typedef::ISO_OUT2;
-static constexpr ISO_OutputPin_Typedef ISO_OUT3 = ISO_OutputPin_Typedef::ISO_OUT3;
-static constexpr ISO_OutputPin_Typedef ISO_OUT4 = ISO_OutputPin_Typedef::ISO_OUT4;
-static constexpr ISO_OutputPin_Typedef ISO_OUT5 = ISO_OutputPin_Typedef::ISO_OUT5;
-static constexpr ISO_OutputPin_Typedef ISO_OUT6 = ISO_OutputPin_Typedef::ISO_OUT6;
-static constexpr ISO_OutputPin_Typedef ISO_OUT7 = ISO_OutputPin_Typedef::ISO_OUT7;
-static constexpr ISO_OutputPin_Typedef ISO_OUT8 = ISO_OutputPin_Typedef::ISO_OUT8;
+static constexpr ISO_OutputPin ISO_OUT1 = ISO_OutputPin::ISO_OUT1;
+static constexpr ISO_OutputPin ISO_OUT2 = ISO_OutputPin::ISO_OUT2;
+static constexpr ISO_OutputPin ISO_OUT3 = ISO_OutputPin::ISO_OUT3;
+static constexpr ISO_OutputPin ISO_OUT4 = ISO_OutputPin::ISO_OUT4;
+static constexpr ISO_OutputPin ISO_OUT5 = ISO_OutputPin::ISO_OUT5;
+static constexpr ISO_OutputPin ISO_OUT6 = ISO_OutputPin::ISO_OUT6;
+static constexpr ISO_OutputPin ISO_OUT7 = ISO_OutputPin::ISO_OUT7;
+static constexpr ISO_OutputPin ISO_OUT8 = ISO_OutputPin::ISO_OUT8;
 

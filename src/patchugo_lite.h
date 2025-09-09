@@ -98,7 +98,7 @@ class PatchugoLite {
         * @param pin Pin to write, this is a value of @ref ISO_OutputPin_Typedef
         * @param state Value to write to the pin(can be RESET or SET)
         */
-        void ISO_IO_Write(ISO_OutputPin_Typedef pin, FlagStatus state);
+        void ISO_IO_Write(ISO_OutputPin pin, FlagStatus state);
 
          /**
         * @brief Reads a 24V isolated INPUT pin
@@ -106,7 +106,7 @@ class PatchugoLite {
         * @param pin Pin to read, this is a value of @ref ISO_InputPin_Typedef
         * @return uint8_t Value read from the pin(0 or 1)
         */
-        uint8_t ISO_IO_Read(ISO_InputPin_Typedef pin);
+        uint8_t ISO_IO_Read(ISO_InputPin pin);
         
         /**
         * @brief Turns the echo from AT commands OFF
@@ -271,6 +271,20 @@ class PatchugoLite {
         */
         void RS485_Start_Async_Listen(void);
 
+        /**
+        * @brief Initializes the SPI functionalities of the board by setting SPI clock phase and polarity aswell
+        * as configuring SPI parameters
+        * 
+        * @param cpol SPI Clock polarity
+        * @param cpha SPI Clock phase
+        * @param cfgStruct SPI Configuration structure. This is optional and defaults to predefined values if not providded
+        * @return PatchugoStatusCode This function can return the following values:
+        * - OK: SPI was initialized correctly
+        * - ERROR_SPI_HAL_INIT: There was an error during the low level initialization of SPI
+        * @note: It is STRONGLY RECOMMENDED not to override the default values of cfgStruct(by not providing it) It's for ADVANCED
+        * USERS ONLY
+        */
+        PatchugoStatusCode SPI_Init(SPI_CPOL cpol, SPI_CPHA cpha, SPIConfigStruct cfgStruct = SPI_DEFAULT_CONFIG_STRUCT);
 
         /**
         * @brief Writes a buffer trough SPI

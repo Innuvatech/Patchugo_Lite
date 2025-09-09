@@ -85,6 +85,7 @@ PatchugoStatusCode Serial_Manager::RS485_Serial_Write(uint8_t* buf, uint16_t len
         HAL_GPIO_WritePin(GPIOA,GPIO_PIN_12,GPIO_PIN_RESET);
         return ERROR_RS485_SERIAL_WRITE;
     }
+    delay(5);
     HAL_GPIO_WritePin(GPIOA,GPIO_PIN_12,GPIO_PIN_RESET);
     return OK;
 }

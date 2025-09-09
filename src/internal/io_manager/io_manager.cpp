@@ -8,24 +8,24 @@
 #include "internal/io_manager/io_manager.h"
 
 /**
-* @brief Converts a @ref ISO_OutputPin_Typedef value to its 
+* @brief Converts a @ref ISO_OutputPin value to its 
 * integer representation
 * 
-* @param pin Enum value to convert. This is a value of @ref ISO_OutputPin_Typedef
+* @param pin Enum value to convert. This is a value of @ref ISO_OutputPin
 * @return uint32_t Integer representation of the enum
 */
- static inline uint32_t ISO_OutputPin_ToInt(ISO_OutputPin_Typedef pin) {
+ static inline uint32_t ISO_OutputPin_ToInt(ISO_OutputPin pin) {
     return static_cast<uint32_t>(pin);
  }
  
  /**
- * @brief Converts a @ref ISO_InputPin_Typedef value to its 
+ * @brief Converts a @ref ISO_InputPin value to its 
  * integer representation
  * 
- * @param pin Enum value to convert. This is a value of @ref ISO_InputPin_Typedef
+ * @param pin Enum value to convert. This is a value of @ref ISO_InputPin
  * @return uint32_t Integer representation of the enum
  */
- static inline uint32_t ISO_InputPin_ToInt(ISO_InputPin_Typedef pin) {
+ static inline uint32_t ISO_InputPin_ToInt(ISO_InputPin pin) {
     return static_cast<uint32_t>(pin);
  }
 
@@ -53,10 +53,10 @@ void IO_Manager::Init(void) {
 }
 
 
-void IO_Manager::ISO_IO_Write(ISO_OutputPin_Typedef pin, FlagStatus state) {
+void IO_Manager::ISO_IO_Write(ISO_OutputPin pin, FlagStatus state) {
     digitalWrite(ISO_OutputPin_ToInt(pin), state);
 }
 
-uint8_t IO_Manager::ISO_IO_Read(ISO_InputPin_Typedef pin) {
+uint8_t IO_Manager::ISO_IO_Read(ISO_InputPin pin) {
     return digitalRead(ISO_InputPin_ToInt(pin));
 }

@@ -29,16 +29,16 @@
         /**
         * @brief Writes to a 24V isolated OUTPUT pin
         * 
-        * @param pin Pin to write, this is a value of @ref ISO_OutputPin_Typedef
+        * @param pin Pin to write, this is a value of @ref ISO_OutputPin
         * @param state Value to write to the pin(can be RESET or SET)
         */
-        void ISO_IO_Write(ISO_OutputPin_Typedef pin, FlagStatus state);
+        void ISO_IO_Write(ISO_OutputPin pin, FlagStatus state);
 
         /**
         * @brief Reads a 24V isolated INPUT pin
         * 
-        * @param pin Pin to read, this is a value of @ref ISO_InputPin_Typedef
+        * @param pin Pin to read, this is a value of @ref ISO_InputPin
         * @return uint8_t Value read from the pin(0 or 1)
         */
-        uint8_t ISO_IO_Read(ISO_InputPin_Typedef pin);
+        uint8_t ISO_IO_Read(ISO_InputPin pin);
  };

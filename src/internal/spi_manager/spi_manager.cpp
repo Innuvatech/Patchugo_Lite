@@ -17,6 +17,11 @@ PatchugoStatusCode SPI_Manager::Init(SPI_CPOL cpol, SPI_CPHA cpha, SPIConfigStru
     return OK;
 }
 
+void SPI_Manager::SPI_CS_Init(SPI_CS cs) {
+    uint32_t pin = static_cast<uint32_t>(cs);
+    pinMode(pin, OUTPUT);
+}
+
 PatchugoStatusCode SPI_Manager::SPI_Write(SPI_CS cs, uint8_t *writeData, uint16_t len, uint32_t timeout) {
     uint32_t pin = static_cast<uint32_t>(cs);
     digitalWrite(pin, LOW);
