@@ -163,3 +163,7 @@ PatchugoStatusCode PatchugoLite::Flash_Write_Data(FlashSector sector, FlashPage 
 PatchugoStatusCode PatchugoLite::SPI_Init(SPI_CPOL cpol, SPI_CPHA cpha, SPIConfigStruct cfgStruct) {
     return spiManager.Init(cpol, cpha, cfgStruct);
 }
+
+void PatchugoLite::SPI_CS_Init(SPI_CS cs) {
+    spiManager.SPI_CS_Init(cs);
+}

@@ -287,6 +287,13 @@ class PatchugoLite {
         PatchugoStatusCode SPI_Init(SPI_CPOL cpol, SPI_CPHA cpha, SPIConfigStruct cfgStruct = SPI_DEFAULT_CONFIG_STRUCT);
 
         /**
+        * @brief Initializes the given CS pin
+        * 
+        * @param cs CS pin to initialize
+        */
+        void SPI_CS_Init(SPI_CS cs);
+
+        /**
         * @brief Writes a buffer trough SPI
         * 
         * @param cs Chip select to use
