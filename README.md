@@ -235,3 +235,11 @@ An example of SPI init is provided below:
     Serial.println("ERROR SPI INIT");
   }
 ```
+
+### CS Initializaion
+In order to read/write to other SPI devices a Chip Select pin is needed. The library provides an initialization method for CS pins called **SPI_CS_Init**. 2 pins are usable as CS on the PatchugoLite, D8(CS1) and D10(CS0). An example of CS pin initialization is provided below:
+
+```
+  //Initializes CS0
+  patchugoLite.SPI_CS_Init(SPI_N_CS_0);
+```
