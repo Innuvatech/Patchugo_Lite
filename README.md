@@ -244,3 +244,37 @@ In order to read/write to other SPI devices a Chip Select pin is needed. The lib
   //Initializes CS0
   patchugoLite.SPI_CS_Init(SPI_N_CS_0);
 ```
+
+### Writing with SPI
+In order to write to a device with SPI the **SPI_Write** function must be called. It takes the following parameters:
+  - cs: The chip select pin to use(This can either be SPI_N_CS_0 or SPI_N_CS_1)
+  - writeData: Pointer to the data to write
+  - len: Length of the data to write
+  - Timeout value in milliseconds after which the write request will timeout
+
+An example of SPI write is provided below:
+
+```
+//Writes 3 bytes to SPI device connected to CS0
+uint8_t myWrite[3] = {0x41, 0x42, 0x43};
+if(patchugoLite.SPI_Write(SPI_N_CS_0, myWrite, 3, 3000) != OK) {
+  Serial.println("ERROR SPI WRITE");
+}
+```
+
+### Reading with SPI
+In order to read from a device with SPI the **SPI_Read** function must be called. It takes the following parameters:
+ - cs: The chip select pin to use(This can either be SPI_N_CS_0 or SPI_N_CS_1)
+ - readData: Pointer to the data that will be read
+ - len: Length of the data to read
+ - Timeout value in milliseconds after which the write request will timeout
+
+ An example of SPI read is provided below:
+
+ ```
+//Reads 3 bytes to SPI device connected to CS0 and put them in readBuf
+uint8_t readBuf[3] = {0};
+if(patchugoLite.SPI_Read(SPI_N_CS_0, readBuf, 3, 3000) != OK) {
+  Serial.println("ERROR SPI WRITE");
+}
+ ```
