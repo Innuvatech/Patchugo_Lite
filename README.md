@@ -9,7 +9,8 @@ To use this library the Innuvatech PatchugoBoards board manager is necessary. To
 
 
 ## Library installation
-To install this library into Arduino simply go in the library manager and look for a library called **Patchugo_Lite**. Once installed you can include it in your sketches from the sketches section>Include Library
+To install this library into Arduino simply go in the library manager and look for a library called **Patchugo_Lite**. Once installed you can include it in your sketches from the sketches section>Include Library.
+**IMPORTANT** This library cannot be used in conjuction with Arduino libraries like Wire or SPI! Including them when the PatchugoLite library header file is also included will result in undefined behaviour!!!
 
 ![Library image](https://github.com/Innuvatech/PatchugoLite_Arduino_Manager/blob/main/docs/images/Patchugo_Library.png)
 
